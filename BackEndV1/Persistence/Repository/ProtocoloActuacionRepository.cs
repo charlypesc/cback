@@ -40,5 +40,11 @@ namespace BackEndV1.Persistence.Repository
             _context.Remove(protocolosActuacion);
             await _context.SaveChangesAsync();
         }
+
+        public async Task UpdateProtocolo(ProtocolosActuacion protocolosActuacion)
+        {
+            _context.Update(protocolosActuacion);
+            await _context.SaveChangesAsync();
+        }
     }
 }

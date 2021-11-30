@@ -34,5 +34,10 @@ namespace BackEndV1.Services
         {
             await _protocoloActuacionRepository.EliminarProtocolo(protocolosActuacion);
         }
+
+        public async Task UpdateProtocolo(ProtocolosActuacion protocolosActuacion)
+        {
+            await _protocoloActuacionRepository.UpdateProtocolo(protocolosActuacion);
+        }
     }
 }

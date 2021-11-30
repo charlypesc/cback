@@ -12,5 +12,6 @@ namespace BackEndV1.Domain.IRepository
         Task<List<ProtocolosActuacion>> GetProtocolos(string rbd);
         Task <ProtocolosActuacion>GetProtocoloById(int id);
         Task EliminarProtocolo(ProtocolosActuacion protocolosActuacion);
+        Task UpdateProtocolo(ProtocolosActuacion protocolosActuacion);
     }
 }

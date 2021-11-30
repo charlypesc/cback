@@ -96,6 +96,21 @@ namespace BackEndV1.Controllers
             }
         }
 
+        [HttpPut("CambiarProtocolo")]
+        public async Task<IActionResult>CambiarProtocolo([FromBody] ProtocolosActuacion cambiarProtocolo)
+        {
+            try
+            {
+                await _protocoloActuacionService.UpdateProtocolo(cambiarProtocolo);
+                return Ok(new { message = "Protocolo Actualizado" });
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
        
     }
 }
