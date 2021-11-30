@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20211028194912_v10282021.cs" />
+    <Compile Remove="Migrations\20211028194912_v10282021.Designer.cs" />
+    <Compile Remove="Migrations\20211102162530_v110220210125.cs" />
+    <Compile Remove="Migrations\20211102162530_v110220210125.Designer.cs" />
+    <Compile Remove="Migrations\20211102162902_v110220210125.cs" />
+    <Compile Remove="Migrations\20211102162902_v110220210125.Designer.cs" />
+    <Compile Remove="Migrations\20211102163355_v110220210125.cs" />
+    <Compile Remove="Migrations\20211102163355_v110220210125.Designer.cs" />
+    <Compile Remove="Migrations\20211102163413_v110220210.cs" />
+    <Compile Remove="Migrations\20211102163413_v110220210.Designer.cs" />
+    <Compile Remove="Migrations\20211102163740_v1122021.cs" />
+    <Compile Remove="Migrations\20211102163740_v1122021.Designer.cs" />
+    <Compile Remove="Migrations\20211102163904_v1102202.cs" />
+    <Compile Remove="Migrations\20211102163904_v1102202.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Castle.Windsor" Version="5.1.1" />
+    <PackageReference Include="DinkToPdf" Version="1.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.2" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+
+</Project>
