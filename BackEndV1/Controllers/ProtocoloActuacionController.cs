@@ -53,6 +53,7 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult>Delete(int id)
     {
@@ -73,6 +74,28 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.Message);
         }
     }
+        [Route("getProtocolo/{idProtocolo}")]
+        [HttpGet]
+        public async Task<IActionResult>Get(int idProtocolo)
+        {
+            try
+            {
+
+                var protocoloAct = await _protocoloActuacionService.GetProtocoloById(idProtocolo);
+                    if(protocoloAct == null)
+                {
+                    return Ok(new { message = "Protocolo no existe" });
+                }
+                return Ok(protocoloAct);
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
        
     }
 }
