@@ -30,7 +30,7 @@ namespace BackEndV1.Persistence.Repository
         public async Task<List<Registro>> GetRegistro(int id)
         {
             var registroCompleto = await _context.Registro.Where(x => x.Id == id)
-                                                                 .Include(x=>x.ParticipanteReg).ToListAsync();
+                                                                 .Include(x => x.ParticipanteReg).Include(p=>p.ProtocoloReg).ToListAsync();
             return registroCompleto;
         }
     }
