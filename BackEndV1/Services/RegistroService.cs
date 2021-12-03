@@ -30,5 +30,14 @@ namespace BackEndV1.Services
             return await _registroRepository.GetRegistro(id);
         }
 
+        public async Task EliminarRegistro(Registro registro)
+        {
+            await _registroRepository.EliminarRegistro(registro);
+        }
+
+        public async Task<Registro> BuscarRegistro(int idRegistro)
+        {
+           return await _registroRepository.BuscarRegistro(idRegistro);
+        }
     }
 }

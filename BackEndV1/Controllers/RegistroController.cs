@@ -69,7 +69,33 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [Route("deleteReg/{idReg}")]
+        [HttpDelete]
+        public async Task<IActionResult>EliminarRegistro(int idReg)
+        {
+            try
+            {
+                //buscar registro por id
 
-        
+               var registro = await _registroService.BuscarRegistro(idReg);
+
+                if(registro != null)
+                {
+                    await _registroService.EliminarRegistro(registro);
+                    return Ok(new { message = "El registro ha sido eliminado" });
+                }
+                return Ok(new { message = "El registro no fue encontrado" });
+                //eliminar el registro
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
      }
 }

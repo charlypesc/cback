@@ -11,6 +11,8 @@ namespace BackEndV1.Domain.IRepository
         Task CreateRegistro(Registro registro);
         Task<List<ParticipanteReg>> GetRegistroByRut(string rutParticipante);
         Task<List<Registro>> GetRegistro(int id);
+        Task EliminarRegistro(Registro registro);
+        Task<Registro> BuscarRegistro(int idRegistro);
 
     }
 }

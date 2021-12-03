@@ -33,5 +33,16 @@ namespace BackEndV1.Persistence.Repository
                                                                  .Include(x => x.ParticipanteReg).Include(p=>p.ProtocoloReg).ToListAsync();
             return registroCompleto;
         }
+
+        public async Task EliminarRegistro(Registro registro)
+        {
+            _context.Remove(registro);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<Registro> BuscarRegistro(int idRegistro)
+        {
+           return await _context.Registro.Where(x => x.Id == idRegistro).FirstOrDefaultAsync();
+        }
     }
 }
