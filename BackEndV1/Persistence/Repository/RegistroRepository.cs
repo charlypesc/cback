@@ -21,6 +21,10 @@ namespace BackEndV1.Persistence.Repository
         {
             _context.Add(registro);
             await _context.SaveChangesAsync();
+            int idinsertada = registro.Id;
+            
+            
+
         }
         public async Task<List<ParticipanteReg>> GetRegistroByRut(string rutParticipante)
         {

@@ -26,7 +26,7 @@ namespace BackEndV1.Controllers
 
 
                 await _registroService.CreateRegistro(registro);
-                return Ok(new { message = "El registro ha sido correctamente ingresado" });
+                return Ok(new { message = "El numero de registro es "+registro.Id, numeroRegistro = registro.Id  });
             }
             catch (Exception ex)
             {
