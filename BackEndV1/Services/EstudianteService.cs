@@ -20,9 +20,9 @@ namespace BackEndV1.Services
         {
             await _estudianteRepository.SaveEstudiante(estudiante);
         }
-        public async Task<Estudiante> GetEstudianteByRut(string rutEstudiante)
+        public async Task<Estudiante> GetEstudianteByRut(string rutEstudiante, string rbd)
         {
-            return await _estudianteRepository.GetEstudianteByRut(rutEstudiante);
+            return await _estudianteRepository.GetEstudianteByRut(rutEstudiante, rbd);
         }
 
     }

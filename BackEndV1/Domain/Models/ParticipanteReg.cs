@@ -10,6 +10,7 @@ namespace BackEndV1.Domain.Models
         public int Id { get; set; }
         public string Rut { get; set; }
         public string NombreParticipante { get; set; }
+        public string Rbd { get; set; }
         public DateTime FechaIngreso { get; set; }
         public string Asunto { get; set; }
         public int Activo { get; set; }

@@ -1,5 +1,7 @@
 ﻿using BackEndV1.Domain.IService;
 using BackEndV1.Domain.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -18,9 +20,10 @@ namespace BackEndV1.Controllers
         {
             _establecimientoService = establecimiento;
         }
-
+        // C R E A    E S T A B L E C I M I E N T O
         [HttpPost]
-        
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
         public async Task<IActionResult>Post([FromBody]Establecimiento establecimiento)
         {
             try

@@ -1,10 +1,14 @@
 ﻿using BackEndV1.Domain.IService;
 using BackEndV1.Domain.Models;
+using BackEndV1.Utils;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace BackEndV1.Controllers
@@ -19,6 +23,7 @@ namespace BackEndV1.Controllers
             _registroService = registroService;
         }
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Post([FromBody] Registro registro)
         {
             try
@@ -31,16 +36,19 @@ namespace BackEndV1.Controllers
             catch (Exception ex)
             {
 
-                return BadRequest(ex.Message);
+                return BadRequest(ex.InnerException);
             }
         }
-       //lleva todos los registros
+       //lleva todos los registros al panel de busqueda
         [HttpGet("{rutParticipante}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Get(string rutParticipante)
         {
             try
             {
-                var listParticipante = await _registroService.GetRegistroByRut(rutParticipante);
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                string rbd = JwtConfigurator.GetTokenRbd(identity);
+                var listParticipante = await _registroService.GetRegistroByRut(rutParticipante, rbd);
                 return Ok(listParticipante);
             }
             catch (Exception ex)

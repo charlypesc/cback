@@ -43,7 +43,8 @@ namespace BackEndV1
             services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
             services.AddDbContext<AplicationDbContext>(options =>
             options.UseMySql(Configuration.GetConnectionString("Conexion")));
-            //services - logica de negocio
+            
+            //S E R V I C E S  - Logica de negocio
 
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<ILoginService, LoginService>();
@@ -54,7 +55,9 @@ namespace BackEndV1
             services.AddScoped<IEstablecimientoService, EstablecimientoService>();
             services.AddScoped<IRegistroService, RegistroService>();
             services.AddScoped<IProtocoloActuacionService, ProtocoloActuacionService>();
-            //repository
+            services.AddScoped<ITematicasService, TematicasServices>();
+            services.AddScoped<IReunionesService, ReunionesService>();
+            //R E P O S I T O R I O S 
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
             services.AddScoped<ICuestionarioRepository, CuestionarioRepository>();
@@ -64,13 +67,15 @@ namespace BackEndV1
             services.AddScoped<IEstablecimientoRepository, EstablecimientoRepository>();
             services.AddScoped<IProtocoloActuacionRepository, ProtocoloActuacionRepository>();
             services.AddScoped<IRegistroRepository, RegistroRepository>();
-            //cors
+            services.AddScoped<ITematicasRepository, TematicasRepository>();
+            services.AddScoped<IReunionesRepository, ReunionesRepository>();
+            //C O R S 
             services.AddCors(options => options.AddPolicy("AllowWebApp",
                                       builder => builder.AllowAnyOrigin()
                                                         .AllowAnyHeader()
                                                         .AllowAnyMethod()));
 
-            //Agregando autentificacion
+            //A U T E N T I F I C A C I O N
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
@@ -86,7 +91,7 @@ namespace BackEndV1
 
                     });
 
-            //paquete nugett newton que permite serializar objetos dentro de objetos. (newton softjson)
+            //paquete nugett N E W T O N  que permite   S E R I A L I Z A  objetos dentro de objetos. (newton soft J S O N)
             services.AddControllers().AddNewtonsoftJson(options =>
                                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             

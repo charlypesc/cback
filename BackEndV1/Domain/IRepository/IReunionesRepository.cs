@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace BackEndV1.Domain.IRepository
 {
-    public interface IEstudianteRepository
+    public interface IReunionesRepository
     {
-        Task SaveEstudiante(Estudiante estudiante);
-        Task<Estudiante> GetEstudianteByRut(string rutEstudiante, string rbd);
+        Task CreateReunion(Reuniones reuniones);
+        Task <Reuniones>GetReunionById(int id);
     }
+    
 }

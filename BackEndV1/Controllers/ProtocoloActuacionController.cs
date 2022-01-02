@@ -22,7 +22,10 @@ namespace BackEndV1.Controllers
         {
             _protocoloActuacionService = protocoloActuacionService;
         }
+
+        // G U A R D A    P R O T O C O L O
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Post([FromBody] ProtocolosActuacion protocolosActuacion)
         {
             try
@@ -37,6 +40,8 @@ namespace BackEndV1.Controllers
 
             }
         }
+
+        // B U S C  A    P R O T O C O L O    P O R    R B D
         [HttpGet("{rbd}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Get(string rbd)
@@ -53,8 +58,9 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        // E L I M I N A    P R O T O C O L O
         [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult>Delete(int id)
     {
         try
@@ -74,8 +80,10 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.Message);
         }
     }
+        //B U S C A   P O R    I D
         [Route("getProtocolo/{idProtocolo}")]
         [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult>Get(int idProtocolo)
         {
             try
@@ -95,8 +103,9 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        // A C T U A L I Z A    P R O T O C O L O 
         [HttpPut("CambiarProtocolo")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult>CambiarProtocolo([FromBody] ProtocolosActuacion cambiarProtocolo)
         {
             try

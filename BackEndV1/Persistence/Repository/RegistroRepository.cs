@@ -21,14 +21,11 @@ namespace BackEndV1.Persistence.Repository
         {
             _context.Add(registro);
             await _context.SaveChangesAsync();
-            int idinsertada = registro.Id;
-            
-            
 
         }
-        public async Task<List<ParticipanteReg>> GetRegistroByRut(string rutParticipante)
+        public async Task<List<ParticipanteReg>> GetRegistroByRut(string rutParticipante, string rbd)
         {
-            var registro = await _context.ParticipanteReg.Where(x => x.Rut == rutParticipante && x.Activo == 1).ToListAsync();
+            var registro = await _context.ParticipanteReg.Where(x => x.Rut == rutParticipante && x.Activo == 1 && x.Rbd == rbd).ToListAsync();
             return registro;
         }
         public async Task<List<Registro>> GetRegistro(int id)

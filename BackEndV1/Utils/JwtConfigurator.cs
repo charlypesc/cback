@@ -26,7 +26,9 @@ namespace BackEndV1.Utils
             {
                 new Claim(JwtRegisteredClaimNames.Sub, userInfo.NombreUsuario),
                 new Claim("idUsuario", userInfo.Id.ToString()),
-                new Claim("Nivel", userInfo.Nivel.ToString())
+                new Claim("Nivel", userInfo.Nivel.ToString()),
+                new Claim("Rbd", userInfo.Rbd.ToString()),
+                new Claim("Establecimiento", userInfo.Establecimiento.ToString())
             };
 
         var token = new JwtSecurityToken(
@@ -72,5 +74,22 @@ namespace BackEndV1.Utils
             }
             return 0;
         }
+
+        public static string GetTokenRbd(ClaimsIdentity identity)
+        {
+            if (identity != null)
+            {
+                IEnumerable<Claim> claims = identity.Claims;
+                foreach (var claim in claims)
+                {
+                    if (claim.Type == "Rbd")
+                    {
+                        return claim.Value;
+                    }
+                }
+            }
+            return null;
+        }
+        
     }
 }

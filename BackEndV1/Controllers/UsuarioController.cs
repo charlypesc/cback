@@ -24,8 +24,9 @@ namespace BackEndV1.Controllers
         {
             _usuarioService = usuarioService;
         }
-        //registar usuarios
+        // R E G I S T R A R    U S U A R I O S
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Post([FromBody] Usuario usuario)
         {
             try
@@ -45,7 +46,7 @@ namespace BackEndV1.Controllers
             }
         }
 
-
+        // C A M B I A R    P A S S W O R D 
         [Route("CambiarPassword")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut]

@@ -23,9 +23,9 @@ namespace BackEndV1.Persistence.Repository
             _context.Add(estudiante);
             await _context.SaveChangesAsync();
         }
-        public async Task<Estudiante> GetEstudianteByRut(string rutEstudiante)
+        public async Task<Estudiante> GetEstudianteByRut(string rutEstudiante, string rbd)
         {
-            var rut = await _context.Estudiante.Where(x => x.Run == rutEstudiante).FirstOrDefaultAsync();
+            var rut = await _context.Estudiante.Where(x => x.Run == rutEstudiante && x.Rbd == rbd).FirstOrDefaultAsync();
             return rut;
         }
 

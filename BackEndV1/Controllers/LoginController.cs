@@ -23,6 +23,7 @@ namespace BackEndV1.Controllers
             _loginService = loginService;
             _config = config;
         }
+        // L O G I N   V A L I D A C I O N 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Usuario usuario)
         {

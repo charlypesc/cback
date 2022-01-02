@@ -3,14 +3,16 @@ using System;
 using BackEndV1.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackEndV1.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    partial class AplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211215230649_v2021dic")]
+    partial class v2021dic
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -255,9 +257,6 @@ namespace BackEndV1.Migrations
                     b.Property<int>("RegistroId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ReunionesId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Rut")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -267,8 +266,6 @@ namespace BackEndV1.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("RegistroId");
-
-                    b.HasIndex("ReunionesId");
 
                     b.ToTable("ParticipanteReg");
                 });
@@ -311,14 +308,9 @@ namespace BackEndV1.Migrations
                     b.Property<int>("RegistroId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ReunionesId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("RegistroId");
-
-                    b.HasIndex("ReunionesId");
 
                     b.ToTable("ProtocoloReg");
                 });
@@ -453,112 +445,6 @@ namespace BackEndV1.Migrations
                     b.ToTable("RespuestaCuestionarioDetalles");
                 });
 
-            modelBuilder.Entity("BackEndV1.Domain.Models.Reuniones", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("Activo")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Acuerdos")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Antecedentes")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Asunto")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Fecha")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("Profesional")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("Rbd")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("RutAsociado")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Tipo")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TipoReunion")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("Reuniones");
-                });
-
-            modelBuilder.Entity("BackEndV1.Domain.Models.Tematicas", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Rbd")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Tematica")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tematicas");
-                });
-
-            modelBuilder.Entity("BackEndV1.Domain.Models.TematicasReg", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("NumeroId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Rbd")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("RegistroId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ReunionesId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Tematica")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TipoFormulario")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RegistroId");
-
-                    b.HasIndex("ReunionesId");
-
-                    b.ToTable("TematicasReg");
-                });
-
             modelBuilder.Entity("BackEndV1.Domain.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
@@ -615,10 +501,6 @@ namespace BackEndV1.Migrations
                         .HasForeignKey("RegistroId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("BackEndV1.Domain.Models.Reuniones", null)
-                        .WithMany("ParticipanteReg")
-                        .HasForeignKey("ReunionesId");
                 });
 
             modelBuilder.Entity("BackEndV1.Domain.Models.Pregunta", b =>
@@ -637,10 +519,6 @@ namespace BackEndV1.Migrations
                         .HasForeignKey("RegistroId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("BackEndV1.Domain.Models.Reuniones", null)
-                        .WithMany("ProtocoloReg")
-                        .HasForeignKey("ReunionesId");
                 });
 
             modelBuilder.Entity("BackEndV1.Domain.Models.Registro", b =>
@@ -683,28 +561,6 @@ namespace BackEndV1.Migrations
                         .HasForeignKey("RespuestaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("BackEndV1.Domain.Models.Reuniones", b =>
-                {
-                    b.HasOne("BackEndV1.Domain.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BackEndV1.Domain.Models.TematicasReg", b =>
-                {
-                    b.HasOne("BackEndV1.Domain.Models.Registro", "Registro")
-                        .WithMany("TematicasReg")
-                        .HasForeignKey("RegistroId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BackEndV1.Domain.Models.Reuniones", null)
-                        .WithMany("TematicasReg")
-                        .HasForeignKey("ReunionesId");
                 });
 #pragma warning restore 612, 618
         }

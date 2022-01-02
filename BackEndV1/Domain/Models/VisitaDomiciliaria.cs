@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BackEndV1.Domain.Models
 {
-    public class Registro
+    public class VisitaDomiciliaria
     {
         public int Id { get; set; }
 

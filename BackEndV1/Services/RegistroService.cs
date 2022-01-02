@@ -21,9 +21,9 @@ namespace BackEndV1.Services
         }
 
 
-        public async Task<List<ParticipanteReg>> GetRegistroByRut(string rutParticipante)
+        public async Task<List<ParticipanteReg>> GetRegistroByRut(string rutParticipante, string rbd)
         {
-            return await _registroRepository.GetRegistroByRut(rutParticipante);
+            return await _registroRepository.GetRegistroByRut(rutParticipante, rbd);
         }
         public async Task<List<Registro>> GetRegistro(int id)
         {

@@ -22,6 +22,9 @@ namespace BackEndV1.Persistence.Context
         public DbSet<ParticipanteReg> ParticipanteReg { get; set; }
         public DbSet<ProtocolosActuacion> ProtocoloActuacion { get; set; }
         public DbSet<ProtocoloReg> ProtocoloReg { get; set; }
+        public DbSet<Tematicas> Tematicas { get; set; }
+        public DbSet<TematicasReg> TematicasReg { get; set; }
+        public DbSet<Reuniones> Reuniones { get; set; }
         public AplicationDbContext(DbContextOptions<AplicationDbContext> options) : base(options) 
         {
 
