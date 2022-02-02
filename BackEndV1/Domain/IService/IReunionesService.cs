@@ -9,6 +9,7 @@ namespace BackEndV1.Domain.IService
     public interface IReunionesService
     {
         Task CreateReunion(Reuniones reuniones);
-        Task<Reuniones>GetReunionById(int id);
+        Task<List<Reuniones>>GetReunionById(int id);
+        Task UpdateReuniones(Reuniones Reuniones);
     }
 }

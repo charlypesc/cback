@@ -19,6 +19,36 @@
     <Compile Remove="Migrations\20211102163740_v1122021.Designer.cs" />
     <Compile Remove="Migrations\20211102163904_v1102202.cs" />
     <Compile Remove="Migrations\20211102163904_v1102202.Designer.cs" />
+    <Compile Remove="Migrations\20220126194237_v26-01-2022.cs" />
+    <Compile Remove="Migrations\20220126194237_v26-01-2022.Designer.cs" />
+    <Compile Remove="Migrations\20220126194928_v26-01-22-v2.cs" />
+    <Compile Remove="Migrations\20220126194928_v26-01-22-v2.Designer.cs" />
+    <Compile Remove="Migrations\20220126195010_v26-01-22-v4.cs" />
+    <Compile Remove="Migrations\20220126195010_v26-01-22-v4.Designer.cs" />
+    <Compile Remove="Migrations\20220126195752_v15.cs" />
+    <Compile Remove="Migrations\20220126195752_v15.Designer.cs" />
+    <Compile Remove="Migrations\20220126202423_v16.cs" />
+    <Compile Remove="Migrations\20220126202423_v16.Designer.cs" />
+    <Compile Remove="Migrations\20220126202550_v17.cs" />
+    <Compile Remove="Migrations\20220126202550_v17.Designer.cs" />
+    <Compile Remove="Migrations\20220127123932_v1.cs" />
+    <Compile Remove="Migrations\20220127123932_v1.Designer.cs" />
+    <Compile Remove="Migrations\20220127125120_v2.cs" />
+    <Compile Remove="Migrations\20220127125120_v2.Designer.cs" />
+    <Compile Remove="Migrations\20220127125310_v3.cs" />
+    <Compile Remove="Migrations\20220127125310_v3.Designer.cs" />
+    <Compile Remove="Migrations\20220127165934_v4.cs" />
+    <Compile Remove="Migrations\20220127165934_v4.Designer.cs" />
+    <Compile Remove="Migrations\20220127170414_PruebaV1.cs" />
+    <Compile Remove="Migrations\20220127170414_PruebaV1.Designer.cs" />
+    <Compile Remove="Migrations\20220127170701_v5.cs" />
+    <Compile Remove="Migrations\20220127170701_v5.Designer.cs" />
+    <Compile Remove="Migrations\20220127171216_vx.cs" />
+    <Compile Remove="Migrations\20220127171216_vx.Designer.cs" />
+    <Compile Remove="Migrations\20220127171606_v1.cs" />
+    <Compile Remove="Migrations\20220127171606_v1.Designer.cs" />
+    <Compile Remove="Migrations\20220127173330_v2.cs" />
+    <Compile Remove="Migrations\20220127173330_v2.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

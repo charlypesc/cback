@@ -3,14 +3,16 @@ using System;
 using BackEndV1.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackEndV1.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    partial class AplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220131160109_V1-3101")]
+    partial class V13101
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -258,6 +260,9 @@ namespace BackEndV1.Migrations
                     b.Property<string>("Rut")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ReunionesId");
@@ -350,31 +355,6 @@ namespace BackEndV1.Migrations
                     b.HasIndex("RegistroId");
 
                     b.ToTable("ProtocoloReg");
-                });
-
-            modelBuilder.Entity("BackEndV1.Domain.Models.ProtocoloReu", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("DescripcionProtocolo")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("NombreProtocolo")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("ProtocoloId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ReunionesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReunionesId");
-
-                    b.ToTable("ProtocolosReu");
                 });
 
             modelBuilder.Entity("BackEndV1.Domain.Models.ProtocolosActuacion", b =>
@@ -608,37 +588,6 @@ namespace BackEndV1.Migrations
                     b.ToTable("TematicasReg");
                 });
 
-            modelBuilder.Entity("BackEndV1.Domain.Models.TematicasReu", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("NumeroId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Rbd")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("ReunionesId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Tematica")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TipoFormulario")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReunionesId");
-
-                    b.ToTable("TematicasReu");
-                });
-
             modelBuilder.Entity("BackEndV1.Domain.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
@@ -691,7 +640,7 @@ namespace BackEndV1.Migrations
             modelBuilder.Entity("BackEndV1.Domain.Models.ParticipanteManual", b =>
                 {
                     b.HasOne("BackEndV1.Domain.Models.Reuniones", "Reuniones")
-                        .WithMany("ParticipanteManual")
+                        .WithMany("participanteManual")
                         .HasForeignKey("ReunionesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -726,15 +675,6 @@ namespace BackEndV1.Migrations
                     b.HasOne("BackEndV1.Domain.Models.Registro", "Registro")
                         .WithMany("ProtocoloReg")
                         .HasForeignKey("RegistroId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BackEndV1.Domain.Models.ProtocoloReu", b =>
-                {
-                    b.HasOne("BackEndV1.Domain.Models.Reuniones", "Reuniones")
-                        .WithMany("ProtocoloReu")
-                        .HasForeignKey("ReunionesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -795,15 +735,6 @@ namespace BackEndV1.Migrations
                     b.HasOne("BackEndV1.Domain.Models.Registro", "Registro")
                         .WithMany("TematicasReg")
                         .HasForeignKey("RegistroId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BackEndV1.Domain.Models.TematicasReu", b =>
-                {
-                    b.HasOne("BackEndV1.Domain.Models.Reuniones", "Reuniones")
-                        .WithMany("TematicasReu")
-                        .HasForeignKey("ReunionesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

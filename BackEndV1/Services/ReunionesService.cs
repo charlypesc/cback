@@ -20,9 +20,14 @@ namespace BackEndV1.Services
             await _reunionesRepository.CreateReunion(reuniones);
         }
 
-        public async Task<Reuniones>GetReunionById(int id)
+        public async Task<List<Reuniones>>GetReunionById(int id)
         {
             return await _reunionesRepository.GetReunionById(id);
+        }
+
+        public async Task UpdateReuniones(Reuniones reuniones)
+        {
+             await _reunionesRepository.UpdateReuniones(reuniones);
         }
     }
 }

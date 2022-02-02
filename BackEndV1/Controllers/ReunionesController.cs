@@ -58,5 +58,22 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.InnerException);
             }
         }
+
+        [HttpPut("ActualizaReunion")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult>CambiarReunion([FromBody] Reuniones reuniones)
+        {
+            try
+            {
+                await _reunionesService.UpdateReuniones(reuniones);
+                return Ok(new { message = "Reunion Actualizada", reunionId = reuniones.Id });
+
+            }
+            catch (Exception ex)
+            {
+
+               return BadRequest(ex.InnerException);
+            }
+        }
     }
 }

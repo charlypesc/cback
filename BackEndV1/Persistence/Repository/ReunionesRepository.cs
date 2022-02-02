@@ -23,9 +23,18 @@ namespace BackEndV1.Persistence.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Reuniones>GetReunionById(int id)
+        public async Task<List<Reuniones>>GetReunionById(int id)
         {
-            return await _context.Reuniones.Where(x => x.Id == id).FirstOrDefaultAsync();
+            return await _context.Reuniones.Where(x => x.Id == id)
+                                                 .Include(x => x.ParticipanteManual)
+                                                 .Include(x => x.ProtocoloReu)
+                                                 .Include(x=> x.TematicasReu).ToListAsync();
+        }
+        //    A C T U A L I Z A 
+        public async Task UpdateReuniones(Reuniones reuniones)
+        {
+            _context.Update(reuniones);
+            await _context.SaveChangesAsync();
         }
     }
 }

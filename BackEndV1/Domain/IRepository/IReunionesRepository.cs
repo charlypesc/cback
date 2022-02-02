@@ -9,7 +9,8 @@ namespace BackEndV1.Domain.IRepository
     public interface IReunionesRepository
     {
         Task CreateReunion(Reuniones reuniones);
-        Task <Reuniones>GetReunionById(int id);
+        Task <List<Reuniones>>GetReunionById(int id);
+        Task UpdateReuniones(Reuniones Reuniones);
     }
     
 }

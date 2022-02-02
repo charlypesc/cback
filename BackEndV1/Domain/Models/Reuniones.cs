@@ -34,8 +34,8 @@ namespace BackEndV1.Domain.Models
         public int UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
 
-        public List<ParticipanteReg> ParticipanteReg { get; set; }
-        public List<ProtocoloReg> ProtocoloReg { get; set; }
-        public List<TematicasReg> TematicasReg { get; set; }
+        public List<ParticipanteManual> ParticipanteManual { get; set; }
+        public List<ProtocoloReu> ProtocoloReu { get; set; }
+        public List<TematicasReu> TematicasReu { get; set; }
     }
 }

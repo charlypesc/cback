@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BackEndV1.Domain.Models
 {
-    public class ParticipanteReg
+    public class ParticipanteManual
     {
         public int Id { get; set; }
         public string Rut { get; set; }
@@ -14,11 +14,8 @@ namespace BackEndV1.Domain.Models
         public DateTime FechaIngreso { get; set; }
         public string Asunto { get; set; }
         public int Activo { get; set; }
-        public int UsuarioId { get; set; }
-        public int RegistroId { get; set; }
-        public Registro Registro { get; set; }
-
         public int ReunionesId { get; set; }
-        public Reuniones Reuniones{ get; set;}
+        public Reuniones Reuniones { get; set; }
+
     }
 }
