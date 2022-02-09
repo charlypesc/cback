@@ -38,7 +38,24 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.InnerException);
             }
         }
-        
+        [Route("getReunionByRut/{rut}")]
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult>getReunionesRut(string rut)
+        {
+            try
+            {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                string rbd = JwtConfigurator.GetTokenRbd(identity);
+                var reuniones = await _reunionesService.GetReunionesByRut(rut, rbd);
+                return Ok(reuniones);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest (ex.InnerException);
+            }
+        }
         [Route("getReunion/{idReunion}")]
         [HttpGet]
         public async Task<IActionResult>Get(int idReunion)

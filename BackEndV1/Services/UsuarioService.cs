@@ -33,5 +33,15 @@ namespace BackEndV1.Services
         {
             await _usuarioRepository.UpdatePassword(usuario);
         }
+
+        public async Task UpdateUser(Usuario usuario)
+        {
+            await _usuarioRepository.UpdateUser(usuario);
+        }
+
+        public async Task DeleteUser(Usuario usuario)
+        {
+            await _usuarioRepository.DeleteUser(usuario);//eliminacion logica
+        }
     }
 }

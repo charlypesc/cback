@@ -40,5 +40,18 @@ namespace BackEndV1.Persistence.Repository
             _context.Update(usuario);
             await _context.SaveChangesAsync();
         }
+
+        public async Task UpdateUser(Usuario usuario)
+        {
+            _context.Update(usuario);
+            await _context.SaveChangesAsync();
+        }
+        //E L I M I N A  - eliminacion del usuario de manera logica
+        public async Task DeleteUser(Usuario usuario)
+        {
+            usuario.Activo = 0;
+            _context.Entry(usuario).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
     }
 }

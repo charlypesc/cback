@@ -3,14 +3,16 @@ using System;
 using BackEndV1.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackEndV1.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    partial class AplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220207095624_v2-0702")]
+    partial class v20702
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -261,49 +263,6 @@ namespace BackEndV1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Funcionario");
-                });
-
-            modelBuilder.Entity("BackEndV1.Domain.Models.ListaDoctosDenuncia", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Asunto")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("DenunciaId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("IdPropioDoc")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MyProperty")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Profesional")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Rbd")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TipoDoc")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TipoReunion")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DenunciaId");
-
-                    b.ToTable("ListaDoctosDenuncia");
                 });
 
             modelBuilder.Entity("BackEndV1.Domain.Models.ParticipanteManual", b =>
@@ -762,15 +721,6 @@ namespace BackEndV1.Migrations
                     b.HasOne("BackEndV1.Domain.Models.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BackEndV1.Domain.Models.ListaDoctosDenuncia", b =>
-                {
-                    b.HasOne("BackEndV1.Domain.Models.Denuncia", "Denuncia")
-                        .WithMany("ListaDoctosDenuncia")
-                        .HasForeignKey("DenunciaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

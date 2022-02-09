@@ -36,5 +36,6 @@ namespace BackEndV1.Domain.Models
         public string Establecimiento { get; set; }
 
         public string Rbd { get; set; }
+        public int Activo { get; set; }
     }
 }

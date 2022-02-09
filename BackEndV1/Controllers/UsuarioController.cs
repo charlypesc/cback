@@ -77,5 +77,65 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+
+        //A C T U A L I Z A R     U S U A R I O
+        [Route("ActualizaUsuario")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpPut]
+        public async Task<IActionResult> ActualizaUsuario([FromBody] Usuario usuario)
+        {
+            try
+            {
+                
+                var validateExistence = await _usuarioService.ValidateExistence(usuario);
+                
+                if (validateExistence)
+                {
+                    await _usuarioService.UpdateUser(usuario);
+                    return Ok(new { message = "Se actualizo el usuario" });
+                }
+                else
+                {
+                    return BadRequest(new { message = "El usuario no se pudo actualizar" });
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        // B O R R A R    U S U A R I O 
+        [Route("BorrraUsuario")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpDelete]
+        public async Task<IActionResult> BorraUsuario([FromBody] Usuario usuario)
+        {
+            try
+            {
+                var validateExistence = await _usuarioService.ValidateExistence(usuario);
+
+                if (validateExistence)
+                {
+                    await _usuarioService.DeleteUser(usuario);
+                    return Ok(new { message = "Se borro el usuario" });
+                }
+                else
+                {
+                    return BadRequest(new { message = "El usuario no se pudo actualizar" });
+                }
+            }
+            catch (Exception)
+            {
+
+                return BadRequest(new { message = "El usuario no se pudo borrar" });
+            }
+        }
+
     }
 }
