@@ -15,14 +15,27 @@ namespace BackEndV1.Services
         {
             _denunciaRepository = denunciaRepository;
         }
+
+        public async Task ActualizaDenuncia(Denuncia denuncia)
+        {
+            await _denunciaRepository.ActualizaDenuncia(denuncia);
+        }
+
         public async Task CreateDenuncia(Denuncia denuncia)
         {
             await _denunciaRepository.CreateDenuncia(denuncia);
+        }
+
+        public async Task<List<Denuncia>> GetDenuncia(int id)
+        {
+           return await _denunciaRepository.GetDenuncia(id);
         }
 
         public async Task<Denuncia> GetDenunciaById(int id)
         {
             return await _denunciaRepository.GetDenunciaById(id);
         }
+
+
     }
 }

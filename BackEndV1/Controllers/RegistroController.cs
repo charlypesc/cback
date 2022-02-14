@@ -49,7 +49,11 @@ namespace BackEndV1.Controllers
                 var identity = HttpContext.User.Identity as ClaimsIdentity;
                 string rbd = JwtConfigurator.GetTokenRbd(identity);
                 var listParticipante = await _registroService.GetRegistroByRut(rutParticipante, rbd);
-                return Ok(listParticipante);
+                if (listParticipante.Count== 0)
+                {
+                    return Ok(new { message = "No se encuentra registro o estudiante no existe", codigo = 0 });
+                }
+                else { return Ok(listParticipante); }
             }
             catch (Exception ex)
             {

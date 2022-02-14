@@ -10,5 +10,7 @@ namespace BackEndV1.Domain.IService
     {
         Task CreateDenuncia(Denuncia denuncia);
         Task <Denuncia> GetDenunciaById(int id);
+        Task ActualizaDenuncia(Denuncia denuncia);
+        Task<List<Denuncia>> GetDenuncia(int id);
     }
 }

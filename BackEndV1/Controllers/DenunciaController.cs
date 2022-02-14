@@ -26,7 +26,7 @@ namespace BackEndV1.Controllers
         // C R E A    D E N U N C I A 
         [HttpPost]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<IActionResult>CreandoDenuncia([FromBody] Denuncia denuncia)
+        public async Task<IActionResult> CreandoDenuncia([FromBody] Denuncia denuncia)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace BackEndV1.Controllers
                 int idUsuario = JwtConfigurator.GetTokenIdUsuario(identity);
                 denuncia.FechaIngreso = DateTime.Now;
                 await _denunciaService.CreateDenuncia(denuncia);
-                return Ok(new { message = "Denuncia agregada correctamente", denunciaId=denuncia.Id });
+                return Ok(new { message = "Denuncia agregada correctamente", denunciaId = denuncia.Id });
 
             }
             catch (Exception ex)
@@ -45,10 +45,10 @@ namespace BackEndV1.Controllers
         }
 
 
-        // B U S C A   P O R   I D
+        // B U S C A   P O R   I D --- P A S O 2
         [Route("DenunciaId/{DenunciaId}")]
         [HttpGet]
-        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<IActionResult> GetDenunciaById(int denunciaId)
         {
             try
@@ -62,5 +62,41 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        //B U S C A    P O R   I D   P A S O 3
+        [HttpGet("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetDenuncia(int id)
+        {
+            try
+            {
+                var denuncia = await _denunciaService.GetDenuncia(id);
+                return Ok(denuncia);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.InnerException);
+            }
+        }    
+
+
+        //A C T U A L I Z A   R E G I S T R O
+        [HttpPut]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> UpdateDenuncia([FromBody] Denuncia denuncia)
+        {
+            try
+            {
+                await _denunciaService.ActualizaDenuncia(denuncia);
+                return Ok(new { message = "Se actualizo la denuncia exitosamente" });
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.InnerException);
+            }
+        }
+
     }
 }
