@@ -72,5 +72,6 @@ namespace BackEndV1.Domain.Models
         [Column(TypeName = "varchar(10)")]
         public string Rbd { get; set; }
         public int anoCursando { get; set; }
+        public int Activo { get; set; }
     }
 }

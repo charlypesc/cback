@@ -30,6 +30,7 @@ namespace BackEndV1.Persistence.Context
         public DbSet<ProtocoloReu> ProtocolosReu { get; set; }
         public DbSet<Denuncia> Denuncia { get; set; }
         public DbSet<ListaDoctosDenuncia> ListaDoctosDenuncia { get; set; }
+        public DbSet<Curso> Curso { get; set; }
         public AplicationDbContext(DbContextOptions<AplicationDbContext> options) : base(options) 
         {
 

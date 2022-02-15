@@ -58,6 +58,7 @@ namespace BackEndV1
             services.AddScoped<ITematicasService, TematicasServices>();
             services.AddScoped<IReunionesService, ReunionesService>();
             services.AddScoped<IDenunciaService, DenunciaService>();
+            services.AddScoped<ICursoService, CursoService>();
             //R E P O S I T O R I O S 
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ILoginRepository, LoginRepository>();
@@ -71,6 +72,7 @@ namespace BackEndV1
             services.AddScoped<ITematicasRepository, TematicasRepository>();
             services.AddScoped<IReunionesRepository, ReunionesRepository>();
             services.AddScoped<IDenunciaRepository, DenunciaRepository>();
+            services.AddScoped<ICursoRepository, CursoRepository>();
             //C O R S 
             services.AddCors(options => options.AddPolicy("AllowWebApp",
                                       builder => builder.AllowAnyOrigin()

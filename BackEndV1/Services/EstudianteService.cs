@@ -25,5 +25,29 @@ namespace BackEndV1.Services
             return await _estudianteRepository.GetEstudianteByRut(rutEstudiante, rbd);
         }
 
+        public async Task<List<Estudiante>> GetEstudiantesByRbdByAno(string rbd, int anoCursando)
+        {
+            return await _estudianteRepository.GetEstudiantesByRbdByAno(rbd, anoCursando);
+        }
+
+        public async Task<List<Estudiante>> GetEstudiantesByRbdByAnoByCurso(string rbd, int anoCursando, string curso)
+        {
+            return await _estudianteRepository.GetEstudiantesByRbdByAnoByCurso(rbd, anoCursando, curso);
+        }
+
+        public async Task<Estudiante> GetEstudianteById(int id)
+        {
+            return await _estudianteRepository.GetEstudianteById(id); 
+        }
+
+        public async Task EliminaEstudiante(Estudiante estudiante)
+        {
+            await _estudianteRepository.EliminaEstudiante(estudiante);
+        }
+
+        public async Task UpdateEstudiante(Estudiante estudiante)
+        {
+            await _estudianteRepository.UpdateEstudiante(estudiante);
+        }
     }
 }

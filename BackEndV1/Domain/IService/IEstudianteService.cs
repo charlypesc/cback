@@ -10,5 +10,13 @@ namespace BackEndV1.Domain.IService
     {
         Task SaveEstudiante(Estudiante estudiante);
         Task<Estudiante>GetEstudianteByRut(string rutEstudiante, string rbd);
+        Task<List<Estudiante>> GetEstudiantesByRbdByAno(string rbd, int anoCursando);
+        Task<List<Estudiante>> GetEstudiantesByRbdByAnoByCurso(string rbd, int anoCursando, string curso);
+        Task<Estudiante> GetEstudianteById(int id);
+        Task EliminaEstudiante(Estudiante estudiante);
+        Task UpdateEstudiante(Estudiante estudiante);
+
+
+
     }
 }
