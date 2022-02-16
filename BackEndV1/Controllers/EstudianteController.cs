@@ -73,7 +73,7 @@ namespace BackEndV1.Controllers
         {
             try
             {
-                var ano = 2022;
+                var ano = DateTime.Now.Year;
                 var identity = HttpContext.User.Identity as ClaimsIdentity;
                 string rbd = JwtConfigurator.GetTokenRbd(identity);
                 var estudiantes = await _estudianteService.GetEstudiantesByRbdByAno(rbd, ano);

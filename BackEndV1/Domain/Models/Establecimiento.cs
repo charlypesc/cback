@@ -30,6 +30,7 @@ namespace BackEndV1.Domain.Models
         [Required]
         [Column(TypeName = "varchar(100)")]
         public string Director { get; set; }
+        public int Activo { get; set; }
 
     }
 }

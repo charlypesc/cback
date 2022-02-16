@@ -16,9 +16,29 @@ namespace BackEndV1.Services
             _establecimientoRepository = establecimientoRepository;
         }
 
+        public async Task EliminaEstablecimiento(Establecimiento establecimiento)
+        {
+            await _establecimientoRepository.EliminaEstablecimiento(establecimiento);
+        }
+
+        public async Task<Establecimiento> GetEstablecimientoById(int id)
+        {
+            return await _establecimientoRepository.GetEstablecimientoById(id);
+        }
+
+        public async Task<List<Establecimiento>> GetEstablecimientos()
+        {
+            return await _establecimientoRepository.GetEstablecimientos();
+        }
+
         public async Task SaveEstablecimiento(Establecimiento establecimiento)
         {
             await _establecimientoRepository.SaveEstablecimiento(establecimiento);
+        }
+
+        public Task UpdateEstablecimiento(Establecimiento establecimiento)
+        {
+            throw new NotImplementedException();
         }
     }
 }

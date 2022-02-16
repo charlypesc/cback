@@ -36,7 +36,56 @@ namespace BackEndV1.Controllers
             catch (Exception e)
             {
 
-                return BadRequest(e.Message);
+                return BadRequest(e.InnerException);
+            }
+        }
+
+
+        // G E T    E S T A B L E C I M I E N T O S    T O D O S
+        [Route("getEstablecimientos")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet]
+        public async Task<IActionResult> GetTodosEstablecimientos()
+        {
+            try
+            {
+                var establecimiento = await _establecimientoService.GetEstablecimientos();
+                if (establecimiento.Count == 0)
+                {
+                    return Ok(new { message = "No hay establecimientos ingresados" });
+                }
+                else {
+                    return Ok(establecimiento);
+                }
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.InnerException);
+            }
+        }
+
+        // G E T   E S T A B L E C I M I E N T O    I D
+
+        [Route("getEstablecimientos/{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet]
+
+        public async Task<IActionResult>GetEstablecimientoId(int id)
+        {
+            try
+            {
+                var establecimiento = await _establecimientoService.GetEstablecimientoById(id);
+                if(establecimiento == null)
+                {
+                    return Ok(new { message = "El establecimiento no se encuentra" });
+                }
+                return Ok(establecimiento);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.InnerException);
             }
         }
     }

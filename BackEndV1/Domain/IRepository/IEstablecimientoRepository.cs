@@ -9,5 +9,9 @@ namespace BackEndV1.Domain.IRepository
     public interface IEstablecimientoRepository
     {
         Task SaveEstablecimiento(Establecimiento establecimiento);
+        Task<List<Establecimiento>> GetEstablecimientos();
+        Task<Establecimiento> GetEstablecimientoById(int id);
+        Task UpdateEstablecimiento(Establecimiento establecimiento);
+        Task EliminaEstablecimiento(Establecimiento establecimiento);
     }
 }
