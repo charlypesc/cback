@@ -36,9 +36,9 @@ namespace BackEndV1.Services
             await _establecimientoRepository.SaveEstablecimiento(establecimiento);
         }
 
-        public Task UpdateEstablecimiento(Establecimiento establecimiento)
+        public async Task UpdateEstablecimiento(Establecimiento establecimiento)
         {
-            throw new NotImplementedException();
+            await _establecimientoRepository.UpdateEstablecimiento(establecimiento);
         }
     }
 }

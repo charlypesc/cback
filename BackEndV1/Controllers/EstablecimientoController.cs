@@ -88,5 +88,50 @@ namespace BackEndV1.Controllers
                 return BadRequest(e.InnerException);
             }
         }
+
+        //A C T U A L I Z A
+        [HttpPut]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> EditaEstablecimiento([FromBody] Establecimiento establecimiento)
+        {
+            try
+            {
+                
+                    await _establecimientoService.UpdateEstablecimiento(establecimiento);
+                    return Ok(new { message = "El establecimiento ha sido actualizado" });
+                
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
+
+
+        //A C T U A L I Z A
+        [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> EliminaEstablecimiento(int id)
+        {
+            try
+            {
+                var establecimiento = await _establecimientoService.GetEstablecimientoById(id);
+                if (establecimiento == null)
+                {
+                    return Ok(new { message = "El establecimiento no se encuentra disponible" });
+                }
+                else
+                {
+                    await _establecimientoService.EliminaEstablecimiento(establecimiento);
+                    return Ok(new { message = "El establecimiento ha sido borrado" });
+                }
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.InnerException);
+            }
+        }
     }
 }
