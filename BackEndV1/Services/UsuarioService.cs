@@ -43,5 +43,15 @@ namespace BackEndV1.Services
         {
             await _usuarioRepository.DeleteUser(usuario);//eliminacion logica
         }
+
+        public async Task<List<Usuario>> GetListUsuarioRbd(string rbd, int active)
+        {
+           return await _usuarioRepository.GetListUsuarioRbd(rbd, active);
+        }
+
+        public async Task<Usuario> GetUsuarioById(int id)
+        {
+            return await _usuarioRepository.GetUsuarioById(id);
+        }
     }
 }

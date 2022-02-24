@@ -111,13 +111,19 @@ namespace BackEndV1.Controllers
         }
 
         // B O R R A R    U S U A R I O 
-        [Route("BorrraUsuario")]
+        [Route("BorrraUsuario/{id}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpDelete]
-        public async Task<IActionResult> BorraUsuario([FromBody] Usuario usuario)
+        public async Task<IActionResult> BorraUsuario(int id)
         {
             try
             {
+                var usuario = await _usuarioService.GetUsuarioById(id);
+                if(usuario == null)
+                {
+                    return Ok(new { message = "No se encuentra el usuario" });
+                }
+
                 var validateExistence = await _usuarioService.ValidateExistence(usuario);
 
                 if (validateExistence)
@@ -127,13 +133,36 @@ namespace BackEndV1.Controllers
                 }
                 else
                 {
-                    return BadRequest(new { message = "El usuario no se pudo actualizar" });
+                    return BadRequest(new { message = "El usuario no se pudo borrar" });
                 }
             }
             catch (Exception)
             {
 
                 return BadRequest(new { message = "El usuario no se pudo borrar" });
+            }
+        }
+        [Route("getUsuarioRbd")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [HttpGet]
+        public async Task<IActionResult> GetUsuarioListaRbd()
+        {
+            try
+            {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                string rbd = JwtConfigurator.GetTokenRbd(identity);
+                var activo = 1;
+                var usuarios = await _usuarioService.GetListUsuarioRbd(rbd, activo);
+                if(usuarios.Count == 0)
+                {
+                    return Ok(new { messagge = "No hay usuarios para el RBD "+rbd });
+                }
+                return Ok(usuarios);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.InnerException);
             }
         }
 

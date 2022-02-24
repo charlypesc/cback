@@ -14,5 +14,11 @@ namespace BackEndV1.Domain.IService
         Task UpdatePassword(Usuario usuario);
         Task UpdateUser(Usuario usuario);
         Task DeleteUser(Usuario usuario);
+        Task <List<Usuario>>GetListUsuarioRbd(string rbd, int active);
+        Task<Usuario> GetUsuarioById(int id);
+
+        //admin escuela: debe traer todos los usuario de su escuela sin la contrasena
+
+        //superadmin: debe permitir modificar las contrasenas de cualquier establecimiento
     }
 }

@@ -14,5 +14,7 @@ namespace BackEndV1.Domain.IRepository
         Task UpdatePassword(Usuario usuario);
         Task UpdateUser(Usuario usuario);
         Task DeleteUser(Usuario usuario);
+        Task<List<Usuario>> GetListUsuarioRbd(string rbd, int active);
+        Task<Usuario> GetUsuarioById(int id);
     }
 }
