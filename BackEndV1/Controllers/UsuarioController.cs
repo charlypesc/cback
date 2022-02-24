@@ -110,7 +110,7 @@ namespace BackEndV1.Controllers
             }
         }
 
-        // B O R R A R    U S U A R I O 
+        // B O R R A R    U S U A R I 
         [Route("BorrraUsuario/{id}")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpDelete]
