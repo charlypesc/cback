@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEndV1.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20220215144351_v1-02152022")]
-    partial class v102152022
+    [Migration("20220329000827_quitandoReunions")]
+    partial class quitandoReunions
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -108,6 +108,9 @@ namespace BackEndV1.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Activo")
                         .HasColumnType("int");
 
                     b.Property<string>("Comuna")
@@ -211,6 +214,9 @@ namespace BackEndV1.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
+                    b.Property<int>("NumeroLista")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Pie")
                         .HasColumnType("tinyint(1)");
 
@@ -253,6 +259,9 @@ namespace BackEndV1.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Activo")
                         .HasColumnType("int");
 
                     b.Property<string>("Apellido")
@@ -773,6 +782,9 @@ namespace BackEndV1.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
+
+                    b.Property<int>("Prueba")
+                        .HasColumnType("int");
 
                     b.Property<string>("Rbd")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");

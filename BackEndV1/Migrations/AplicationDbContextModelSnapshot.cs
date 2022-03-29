@@ -399,9 +399,6 @@ namespace BackEndV1.Migrations
                     b.Property<int>("RegistroId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ReunionesId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Rut")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -411,8 +408,6 @@ namespace BackEndV1.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("RegistroId");
-
-                    b.HasIndex("ReunionesId");
 
                     b.ToTable("ParticipanteReg");
                 });
@@ -781,6 +776,9 @@ namespace BackEndV1.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
+                    b.Property<int>("Prueba")
+                        .HasColumnType("int");
+
                     b.Property<string>("Rbd")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -824,12 +822,6 @@ namespace BackEndV1.Migrations
                     b.HasOne("BackEndV1.Domain.Models.Registro", "Registro")
                         .WithMany("ParticipanteReg")
                         .HasForeignKey("RegistroId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BackEndV1.Domain.Models.Reuniones", "Reuniones")
-                        .WithMany()
-                        .HasForeignKey("ReunionesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -13,10 +13,10 @@ namespace BackEndV1.Utils
         {
             return LoadUnmanagedDll(absolutePath);
         }
-        protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
-        {
-            return LoadUnmanagedDllFromPath(unmanagedDllName);
-        }
+        // protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
+        // {
+        //     return LoadUnmanagedDllFromPath(unmanagedDllName);
+        // }
         protected override Assembly Load(AssemblyName assemblyName)
         {
             throw new NotImplementedException();

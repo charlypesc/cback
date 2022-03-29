@@ -17,8 +17,5 @@ namespace BackEndV1.Domain.Models
         public int UsuarioId { get; set; }
         public int RegistroId { get; set; }
         public Registro Registro { get; set; }
-
-        public int ReunionesId { get; set; }
-        public Reuniones Reuniones{ get; set;}
     }
 }

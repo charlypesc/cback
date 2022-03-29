@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEndV1.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20220216143611_v2-02162022")]
-    partial class v202162022
+    [Migration("20220309100232_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -259,6 +259,9 @@ namespace BackEndV1.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Activo")
                         .HasColumnType("int");
 
                     b.Property<string>("Apellido")
@@ -779,6 +782,9 @@ namespace BackEndV1.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
+
+                    b.Property<int>("Prueba")
+                        .HasColumnType("int");
 
                     b.Property<string>("Rbd")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
