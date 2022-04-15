@@ -31,6 +31,7 @@ namespace BackEndV1.Domain.Models
         public string Acuerdos { get; set; }
         public int Activo { get; set; }//ok
         public string Tipo { get; set; }//ok
+        public int Folio { get; set; }
         public int UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
 

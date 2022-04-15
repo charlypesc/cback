@@ -13,6 +13,7 @@ namespace BackEndV1.Domain.Models
         public string RutAsociado { get; set; }
         public string FolioRit { get; set; }
         public int FolioInterno { get; set; }
+        public string Rbd { get; set; }
         public DateTime FechaIngreso { get; set; }
         public DateTime FechaAsignada { get; set; }
         //lista con registros asociados registros o visitas

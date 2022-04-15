@@ -98,5 +98,32 @@ namespace BackEndV1.Controllers
             }
         }
 
+        [Route("folioDenuncia/{rbd}")]
+        [HttpGet]
+        
+            public async Task<IActionResult>GetRegistrosAll(string rbd)
+            {
+                try
+                {
+                    var denunciasAll = await _denunciaService.GetDenunciasAll(rbd);
+
+                if (denunciasAll.Count >= 1 )
+                {
+                    var ultimo = denunciasAll.LastOrDefault();
+                    return Ok(ultimo.FolioInterno);
+                }
+                else
+                {
+                    var ultimo = denunciasAll.LastOrDefault();
+                    return Ok(1);
+                }
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.InnerException);
+                    
+                }
+            }
+
     }
 }
