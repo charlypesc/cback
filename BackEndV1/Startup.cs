@@ -75,9 +75,10 @@ namespace BackEndV1
             services.AddScoped<ICursoRepository, CursoRepository>();
             //C O R S 
             services.AddCors(options => options.AddPolicy("AllowWebApp",
-                                      builder => builder.AllowAnyOrigin()
+                                      builder => builder.SetIsOriginAllowed(isOriginAllowed: _ =>true)
                                                         .AllowAnyHeader()
-                                                        .AllowAnyMethod()));
+                                                        .AllowAnyMethod()
+                                                        .AllowCredentials()));
 
             //A U T E N T I F I C A C I O N
 
