@@ -39,5 +39,10 @@ namespace BackEndV1.Services
         {
            return await _registroRepository.BuscarRegistro(idRegistro);
         }
+
+        public async Task<List<Registro>> GetRegistrosAll(string rbd)
+        {
+            return await _registroRepository.GetRegistrosAll(rbd);
+        }
     }
 }

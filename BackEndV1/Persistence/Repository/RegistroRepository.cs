@@ -45,5 +45,16 @@ namespace BackEndV1.Persistence.Repository
         {
            return await _context.Registro.Where(x => x.Id == idRegistro).FirstOrDefaultAsync();
         }
+
+        public async Task<List<Registro>> GetRegistrosAll(string rbd)
+        {
+            return await _context.Registro.Where(x=> x.Rbd == rbd).
+                                                Select(o=>new Registro
+                                                {
+                                                  Id = o.Id,
+                                                  Folio=o.Folio      
+                                                }).ToListAsync();
+            
+        }
     }
 }

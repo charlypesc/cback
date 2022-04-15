@@ -40,8 +40,15 @@ namespace BackEndV1.Persistence.Repository
             var denuncia = await _context.Denuncia.Where(x=> x.Id == id).FirstOrDefaultAsync();
             return denuncia;
         }
-        
-       
-        
+
+        public async Task<List<Denuncia>> GetDenunciasAll(string rbd)
+        {
+              return await _context.Denuncia.Where(x=> x.Rbd == rbd).
+                                                Select(o=>new Denuncia
+                                                {
+                                                  Id = o.Id,
+                                                  FolioInterno=o.FolioInterno      
+                                                }).ToListAsync();
+        }
     }
 }

@@ -31,6 +31,11 @@ namespace BackEndV1.Controllers
 
 
                 await _registroService.CreateRegistro(registro);
+                //invocar metodo que trae el ultimo con folio registro
+
+
+
+                //a ese numero de folio debo sumarle 1
                 return Ok(new { message = "El numero de registro es "+registro.Id, numeroRegistro = registro.Id  });
             }
             catch (Exception ex)
@@ -109,5 +114,33 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [Route("folioRegistro/{rbd}")]
+        [HttpGet]
+        
+            public async Task<IActionResult>GetRegistrosAll(string rbd)
+            {
+                try
+                {
+                    var registrosAll = await _registroService.GetRegistrosAll(rbd);
+
+                if (registrosAll.Count >= 1 )
+                {
+                    var ultimo = registrosAll.LastOrDefault();
+                    return Ok(ultimo.Folio);
+                }
+                else
+                {
+                    var ultimo = registrosAll.LastOrDefault();
+                    return Ok(1);
+                }
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.InnerException);
+                    
+                }
+            }
+        
      }
 }

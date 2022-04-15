@@ -92,5 +92,33 @@ namespace BackEndV1.Controllers
                return BadRequest(ex.InnerException);
             }
         }
+
+        [Route("folioReuniones/{rbd}")]
+        [HttpGet]
+        
+            public async Task<IActionResult>GetRegistrosAll(string rbd)
+            {
+                try
+                {
+                    var registrosAll = await _reunionesService.GetReunionesAll(rbd);
+
+                if (registrosAll.Count >= 1 )
+                {
+                    var ultimo = registrosAll.LastOrDefault();
+                    return Ok(ultimo.Folio);
+                }
+                else
+                {
+                    var ultimo = registrosAll.LastOrDefault();
+                    return Ok(1);
+                }
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.InnerException);
+                    
+                }
+            }
+
     }
 }

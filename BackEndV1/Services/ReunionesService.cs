@@ -25,6 +25,11 @@ namespace BackEndV1.Services
             return await _reunionesRepository.GetReunionById(id);
         }
 
+        public async Task<List<Reuniones>> GetReunionesAll(string rbd)
+        {
+            return await _reunionesRepository.GetReunionesAll(rbd);
+        }
+
         public async Task<List<Reuniones>> GetReunionesByRut(string rut, string rbd)
         {
             return await _reunionesRepository.GetReunionesByRut(rut, rbd);

@@ -30,6 +30,15 @@ namespace BackEndV1.Persistence.Repository
                                                  .Include(x => x.ProtocoloReu)
                                                  .Include(x=> x.TematicasReu).ToListAsync();
         }
+        public async Task<List<Reuniones>> GetReunionesAll(string rbd)
+        {
+            return await _context.Reuniones.Where(x=> x.Rbd == rbd).
+                                        Select(o=>new Reuniones
+                                        {
+                                            Id = o.Id,
+                                            Folio=o.Folio      
+                                        }).ToListAsync();
+        }
 
         public async Task<List<Reuniones>> GetReunionesByRut(string rut, string rbd)
         {

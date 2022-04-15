@@ -36,6 +36,9 @@ namespace BackEndV1.Services
             return await _denunciaRepository.GetDenunciaById(id);
         }
 
-
+        public async Task<List<Denuncia>> GetDenunciasAll(string rbd)
+        {
+            return await _denunciaRepository.GetDenunciasAll(rbd);
+        }
     }
 }

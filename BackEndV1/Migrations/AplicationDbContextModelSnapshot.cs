@@ -94,6 +94,9 @@ namespace BackEndV1.Migrations
                     b.Property<string>("Profesional")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("Rbd")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("RutAsociado")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -525,6 +528,9 @@ namespace BackEndV1.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
+                    b.Property<int>("Folio")
+                        .HasColumnType("int");
+
                     b.Property<string>("Profesional")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
@@ -634,6 +640,9 @@ namespace BackEndV1.Migrations
                     b.Property<string>("Fecha")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
+
+                    b.Property<int>("Folio")
+                        .HasColumnType("int");
 
                     b.Property<string>("Profesional")
                         .IsRequired()

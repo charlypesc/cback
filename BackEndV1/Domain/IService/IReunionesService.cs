@@ -12,5 +12,6 @@ namespace BackEndV1.Domain.IService
         Task<List<Reuniones>>GetReunionById(int id);
         Task UpdateReuniones(Reuniones Reuniones);
         Task<List<Reuniones>> GetReunionesByRut(string rut, string rbd);
+        Task<List<Reuniones>>GetReunionesAll(string rbd);
     }
 }
