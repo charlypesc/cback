@@ -1,18 +1,19 @@
-﻿
-.row {
-    display: block;
-    position: relative;
-    margin: auto;
-    width: 1400px;
-    height: 150px;
-    border: 2px solid #ddd;
-    top: 30px;
-    margin-left:10px;
-    font-family:Arial, Helvetica, sans-serif
+﻿*{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 2rem!important;
+}
+table{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 2rem!important;
+    margin-top:2rem;
+
+}
+td, tr, th{
+    padding:20px 20px!important;
 }
 
 .row p{
-    font-size:25px;
+    font-size:20px;
 }
 .colpdfisq {
     display: block;
@@ -26,13 +27,13 @@
     margin-top: 35px;
     margin-left: 10px;
     color: black;
-    font-size: 50px;
+    font-size: 150px;
 }
 .colpdfder {
     display: block;
     position: absolute;
     width: 300px;
-    left: 1100px;
+    left: 100px;
     
 }
 .colpdfder p{
@@ -41,24 +42,11 @@
 
 /*segunda linea datos*/
 
-.b-rowdatos {
-    position: relative;
-    margin: auto;
-    margin-left: 10px;
-    margin-top: 10px;
-    width: 1400px;
-    height: 150px;
-    border: 1px solid #ddd;
-    top: 50px;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif
-}
-
 
 .b-rowdatos h6{
     margin-top:10px;
     margin-left:5px;
-    font-size:30px;
+    font-size:2rem;
 }
 .b-rowdatos p {
     margin-top:10px;
@@ -96,14 +84,14 @@
     position: relative;
     margin: auto;
     margin-top: 30px;
-    width: 1400px;
+    width: 100vh;
     height: auto;
     top: 50px;
     padding: 10px;
 }
 table, td, th {
     border: 1px solid #ddd;
-    text-align: center;
+    text-align: left;
     
 }
 

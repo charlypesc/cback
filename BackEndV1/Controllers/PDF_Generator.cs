@@ -82,15 +82,18 @@ namespace BackEndV1.Controllers
                         PaperSize = PaperKind.Letter,
                         Margins = new MarginSettings { Top = 15 },
                         DocumentTitle = "Convivencia Escolar",
+                        
                         //Out = @"D:\PDFCreator\Employee_Report.pdf"
                     };
                     var objectSettings = new ObjectSettings
                     {
                         PagesCount = true,
                         HtmlContent = decodedString,
-                        WebSettings = { DefaultEncoding = "utf-8", UserStyleSheet = Path.Combine(Directory.GetCurrentDirectory(), "assets", "Style.css") },
-                        HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Pagina [page] de [toPage]", Line = false },
-                        FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Convivencia Escolar" }
+                        //WebSettings = { DefaultEncoding = "utf-8" },
+                        WebSettings = { DefaultEncoding = "utf-8", UserStyleSheet = Path.Combine(Directory.GetCurrentDirectory(),"assets","Style.css") },
+                        HeaderSettings = { FontName = "Arial", FontSize = 14, Right = "Pagina [page] de [toPage]", Line = false },
+                        FooterSettings = { FontName = "Arial", FontSize = 14, Line = true, Center = "Convivencia Escolar" }
+                        
                     };
                     var pdf = new HtmlToPdfDocument()
                     {
@@ -125,7 +128,7 @@ namespace BackEndV1.Controllers
                         {
                             ColorMode = ColorMode.Color,
                             Orientation = Orientation.Portrait,
-                            PaperSize = PaperKind.Letter,
+                            PaperSize = PaperKind.A4,
                             Margins = new MarginSettings { Top = 15 },
                             DocumentTitle = "Convivencia Escolar",
                             //Out = @"D:\PDFCreator\Employee_Report.pdf"
@@ -183,6 +186,7 @@ namespace BackEndV1.Controllers
                             WebSettings = { DefaultEncoding = "utf-8", UserStyleSheet = Path.Combine(Directory.GetCurrentDirectory(), "assets", "registro.css") },
                             HeaderSettings = { FontName = "Arial", FontSize = 9, Right = "Pagina [page] de [toPage]", Line = false },
                             FooterSettings = { FontName = "Arial", FontSize = 9, Line = true, Center = "Convivencia Escolar" }
+                           
                         };
                         var pdf = new HtmlToPdfDocument()
                         {
