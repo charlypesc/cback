@@ -92,7 +92,7 @@ namespace BackEndV1.Controllers
                return BadRequest(ex.InnerException);
             }
         }
-
+        //Metodo para visualizar SOLAMENTE el numero de folio y generar el numero de folio
         [Route("folioReuniones/{rbd}")]
         [HttpGet]
         

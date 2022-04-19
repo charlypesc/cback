@@ -41,6 +41,11 @@ namespace BackEndV1.Persistence.Repository
             return denuncia;
         }
 
+        public async Task<List<Denuncia>> GetDenunciaRut(string rut)
+        {
+            return await _context.Denuncia.Where(x =>x.RutAsociado == rut).ToListAsync();
+        }
+
         public async Task<List<Denuncia>> GetDenunciasAll(string rbd)
         {
               return await _context.Denuncia.Where(x=> x.Rbd == rbd).

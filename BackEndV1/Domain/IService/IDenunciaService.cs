@@ -13,5 +13,6 @@ namespace BackEndV1.Domain.IService
         Task ActualizaDenuncia(Denuncia denuncia);
         Task<List<Denuncia>> GetDenuncia(int id);
         Task<List<Denuncia>>GetDenunciasAll(string rbd);
+        Task <List<Denuncia>>GetDenunciaRut(string rut);
     }
 }

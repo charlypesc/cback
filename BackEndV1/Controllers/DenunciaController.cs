@@ -97,7 +97,7 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.InnerException);
             }
         }
-
+//trae denuncia para folio
         [Route("folioDenuncia/{rbd}")]
         [HttpGet]
         
@@ -123,6 +123,30 @@ namespace BackEndV1.Controllers
                     return BadRequest(ex.InnerException);
                     
                 }
+            }
+
+            [Route("denunciaRut/{rut}")]
+            [HttpGet]
+            public async Task<IActionResult>GetDenunciaRut(string rut)
+            {
+                try
+                {
+                    // var identity = HttpContext.User.Identity as ClaimsIdentity;
+                    // string rbd = JwtConfigurator.GetTokenRbd(identity);
+                    var denuncias = await _denunciaService.GetDenunciaRut(rut);
+                    if(denuncias.Count >=1){
+                    
+                    return Ok(denuncias);
+
+                    }else{
+                        return Ok(new {messagge = "No hay denuncias registradas"});
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.InnerException);
+                }
+                
             }
 
     }
