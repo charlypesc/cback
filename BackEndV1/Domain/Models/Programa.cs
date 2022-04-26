@@ -15,6 +15,7 @@ namespace BackEndV1.Domain.Models
         public string NombrePrograma { get; set; }
         public string DescripcionPrograma { get; set; }
         public int Activo { get; set; }
+        public string Rbd { get; set; }
 
     }
 }

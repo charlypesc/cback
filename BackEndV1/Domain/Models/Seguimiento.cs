@@ -11,6 +11,7 @@ namespace BackEndV1.Domain.Models
     public DateTime FechaFinSeguimiento { get; set; }
     public int UsuarioId { get; set; }
     public int Activo { get; set; }
+    public string Rbd { get; set; }
     public List<SeguimientoProg> SeguimientoProg { get; set; }    
 
     }
