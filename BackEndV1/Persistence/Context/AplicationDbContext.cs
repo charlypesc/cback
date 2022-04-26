@@ -1,10 +1,5 @@
 ﻿using BackEndV1.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace BackEndV1.Persistence.Context
 {
     public class AplicationDbContext : DbContext
@@ -31,6 +26,9 @@ namespace BackEndV1.Persistence.Context
         public DbSet<Denuncia> Denuncia { get; set; }
         public DbSet<ListaDoctosDenuncia> ListaDoctosDenuncia { get; set; }
         public DbSet<Curso> Curso { get; set; }
+        public DbSet<Programa> Programa { get; set; }
+        public DbSet<Seguimiento> Seguimiento { get; set; }
+        public DbSet<SeguimientoProg> SeguimientoProg { get; set; } 
         public AplicationDbContext(DbContextOptions<AplicationDbContext> options) : base(options) 
         {
 
