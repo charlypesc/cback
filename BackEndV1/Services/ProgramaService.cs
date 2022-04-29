@@ -13,29 +13,29 @@ namespace BackEndV1.Services
         {
             _programaRepository = programaRepository;
         }
-        public Task CreatePrograma(Programa programa)
+        public async Task CreatePrograma(Programa programa)
         {
-            throw new System.NotImplementedException();
+            await _programaRepository.CreatePrograma(programa);      
         }
 
-        public Task EliminarPrograma(Programa programa)
+        public async Task EliminarPrograma(Programa programa)
         {
-            throw new System.NotImplementedException();
+            await _programaRepository.EliminarPrograma(programa);
         }
 
-        public Task<List<Programa>> GetListProgramas(string rbd)
+        public async Task<List<Programa>> GetListProgramas(string rbd)
         {
-            throw new System.NotImplementedException();
+            return await _programaRepository.GetListProgramas(rbd);
         }
 
-        public Task GetPrograma(int idPrograma)
+        public async Task <Programa>GetPrograma(int idPrograma)
         {
-            throw new System.NotImplementedException();
+            return await _programaRepository.GetPrograma(idPrograma);
         }
 
-        public Task UpdatePrograma(Programa programa)
+        public async Task UpdatePrograma(Programa programa)
         {
-            throw new System.NotImplementedException();
+          await _programaRepository.UpdatePrograma(programa);
         }
     }
 }

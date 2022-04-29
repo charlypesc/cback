@@ -188,5 +188,27 @@ namespace BackEndV1.Controllers
                 return BadRequest(ex.InnerException);
             }
         }
+        [Route("getSiguiendo")]
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult>GetSiguiendo(){
+            try
+            {
+                var ano = DateTime.Now.Year;
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                string rbd = JwtConfigurator.GetTokenRbd(identity);
+                var siguiendo = await _estudianteService.GetEstudiantesSeguimiento(1, rbd, ano);
+                if(siguiendo.Count <=0){
+                    return Ok(new {message = "Este establecimiento no registra estudiantes en seguimiento"});
+                }
+                return Ok(siguiendo);
+            }
+            catch (Exception ex)
+            {
+                
+                return BadRequest (ex.InnerException);
+            }
+        }
+        
     }
 }

@@ -74,5 +74,6 @@ namespace BackEndV1.Domain.Models
         public int anoCursando { get; set; }
         public int Activo { get; set; }
         public int NumeroLista { get; set; }
+        public int Seguimiento { get; set; }
     }
 }

@@ -15,5 +15,6 @@ namespace BackEndV1.Domain.IRepository
         Task<Estudiante> GetEstudianteById(int id);
         Task EliminaEstudiante(Estudiante estudiante);
         Task UpdateEstudiante(Estudiante estudiante);
+        Task <List<Estudiante>> GetEstudiantesSeguimiento (int seguimiento, string rbd, int anoCursando);
     }
 }

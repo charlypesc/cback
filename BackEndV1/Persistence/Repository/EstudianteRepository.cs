@@ -59,5 +59,11 @@ namespace BackEndV1.Persistence.Repository
             _context.Update(estudiante);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<Estudiante>> GetEstudiantesSeguimiento(int seguimiento, string rbd, int anoCursando)
+        {
+            var siguiendo = await _context.Estudiante.Where( x=> x.Seguimiento == seguimiento && x.Rbd == rbd && x.anoCursando == anoCursando).ToListAsync();
+            return siguiendo;
+        }
     }
-}
+}  

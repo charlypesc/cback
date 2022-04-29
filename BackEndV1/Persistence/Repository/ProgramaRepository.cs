@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BackEndV1.Domain.IRepository;
 using BackEndV1.Domain.Models;
 using BackEndV1.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackEndV1.Persistence.Repository
 {
@@ -13,29 +15,32 @@ namespace BackEndV1.Persistence.Repository
         {
             _context = context;
         }
-        public Task CreatePrograma(Programa programa)
+        public async Task CreatePrograma(Programa programa)
         {
-            throw new System.NotImplementedException();
+            _context.Add(programa);
+            await _context.SaveChangesAsync();
         }
 
-        public Task EliminarPrograma(Programa programa)
+        public async Task EliminarPrograma(Programa programa)
         {
-            throw new System.NotImplementedException();
+           _context.Remove(programa);
+           await _context.SaveChangesAsync();
         }
 
-        public Task<List<Programa>> GetListProgramas(string rbd)
+        public async Task<List<Programa>> GetListProgramas(string rbd)
         {
-            throw new System.NotImplementedException();
+            var list = await _context.Programa.Where(x=>x.Rbd == rbd).ToListAsync();
+            return list;
+        }
+        public async Task<Programa>GetPrograma(int idPrograma)
+        {
+            return await _context.Programa.Where(x=> x.Id == idPrograma).FirstOrDefaultAsync();
         }
 
-        public Task GetPrograma(int idPrograma)
+        public async Task UpdatePrograma(Programa programa)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public Task UpdatePrograma(Programa programa)
-        {
-            throw new System.NotImplementedException();
+            _context.Update(programa);
+            await _context.SaveChangesAsync();
         }
     }
 }
