@@ -3,14 +3,16 @@ using System;
 using BackEndV1.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackEndV1.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    partial class AplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220429131026_29-04-Seguimiento_v1")]
+    partial class _2904Seguimiento_v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -718,9 +720,6 @@ namespace BackEndV1.Migrations
                     b.Property<DateTime>("FechaInicioSeguimiento")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Nota")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("Rbd")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -761,6 +760,9 @@ namespace BackEndV1.Migrations
 
                     b.Property<int>("SeguimientoId")
                         .HasColumnType("int");
+
+                    b.Property<string>("SeguimientoRbd")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 

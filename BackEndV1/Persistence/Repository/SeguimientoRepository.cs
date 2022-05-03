@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BackEndV1.Domain.IRepository;
 using BackEndV1.Domain.Models;
 using BackEndV1.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackEndV1.Persistence.Repository
 {
@@ -29,14 +31,18 @@ namespace BackEndV1.Persistence.Repository
             throw new System.NotImplementedException();
         }
 
-        public Task<List<Seguimiento>> GetListSeguimiento(string rut, string rbd)
+        public async Task<List<Seguimiento>> GetListSeguimiento(string rut, string rbd)
         {
-            throw new System.NotImplementedException();
+            var listado = await _context.Seguimiento.Where(x=>x.rutEstudiante==rut && x.Rbd==rbd && x.Activo==1)
+                                                    .Include(x=>x.SeguimientoProg).ToListAsync();
+            return listado;
         }
 
-        public Task<Seguimiento> GetSeguimientoById(int id)
+        public async Task<Seguimiento> GetSeguimientoById(int id)
         {
-            throw new System.NotImplementedException();
+           return await _context.Seguimiento.Where(x=>x.Id == id)
+                                                    .Include(x=>x.SeguimientoProg)
+                                                    .FirstOrDefaultAsync();
         }
 
         public Task UpdateSeguimiento(Seguimiento seguimiento)

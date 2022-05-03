@@ -11,10 +11,11 @@ namespace BackEndV1.Domain.Models
     {
         public int Id {get; set; }
         public string NombrePrograma { get; set; }
+        public string NotaPrograma {get; set;}
         public DateTime FechaIngreso { get; set; }
         public DateTime FechaEgreso { get; set; }
-        public string Rbd { get; set; }
         public int Activo { get; set; }
+        public string Rbd { get; set; }
         public int SeguimientoId { get; set; }
         public Seguimiento Seguimiento { get; set; }
         

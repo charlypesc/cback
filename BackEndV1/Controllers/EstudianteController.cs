@@ -50,7 +50,6 @@ namespace BackEndV1.Controllers
                 var identity = HttpContext.User.Identity as ClaimsIdentity;
                 string rbd = JwtConfigurator.GetTokenRbd(identity);
                 var rutUsuario = await _estudianteService.GetEstudianteByRut(rut, rbd);
-
                 if (rutUsuario == null)
                 {
                     return Ok(new { message = " Rut no existe", codigo=0 });
@@ -191,7 +190,8 @@ namespace BackEndV1.Controllers
         [Route("getSiguiendo")]
         [HttpGet]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<IActionResult>GetSiguiendo(){
+        public async Task<IActionResult>GetSiguiendo()
+        {
             try
             {
                 var ano = DateTime.Now.Year;
@@ -209,6 +209,30 @@ namespace BackEndV1.Controllers
                 return BadRequest (ex.InnerException);
             }
         }
+    //activa el estudiante o desactiva el estudiante
+        [Route("activaSeguimiento/{rut}/{val}")]
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult>ActivaSeg(string rut, int val)
+        {
+            try
+            {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                string rbd = JwtConfigurator.GetTokenRbd(identity);
+                //trae el estudiante
+                var estudiante = await _estudianteService.GetEstudianteByRut(rut, rbd);
+                //seteamos al  estudiante con el valor de seguimiento
+                estudiante.Seguimiento=val;
+                await _estudianteService.UpdateEstudiante(estudiante);
+                return Ok (new {message = "Estudiante actualizado", codigo = 1});
+            }
+            catch (Exception ex)
+            {
+                
+                return BadRequest (ex.InnerException);
+
+            }
+        }    
         
     }
 }

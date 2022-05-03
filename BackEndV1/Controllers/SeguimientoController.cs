@@ -23,21 +23,64 @@ namespace BackEndV1.Controllers
                 _seguimientoService = seguimientoService;
             }
 
-        [HttpPost]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<IActionResult> Post([FromBody] Seguimiento seguimiento)
-        {
-            try
+            [HttpPost]
+            [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+            public async Task<IActionResult> Post([FromBody] Seguimiento seguimiento)
             {
-                await _seguimientoService.CreateSeguimiento(seguimiento);
-                return Ok(new { message = "Seguimiento ingresado",  numSeguimiento = seguimiento.Id });
+                try
+                {
+                    await _seguimientoService.CreateSeguimiento(seguimiento);
+                    return Ok(new { message = "Seguimiento ingresado",  numSeguimiento = seguimiento.Id });
+                }
+                catch ( Exception ex)
+                {
+                    
+                    return BadRequest (ex.InnerException);
+                }
             }
-            catch ( Exception ex)
+
+            [HttpGet("{id}")]
+            [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+            public async Task<IActionResult> Get(int id)
             {
-                
-                return BadRequest (ex.InnerException);
+                try
+                {
+                    var seguimiento = await _seguimientoService.GetSeguimientoById(id);
+                    if (seguimiento==null){
+                        return Ok(new {message = "No hay seguimientos ingresados"} );
+                    }else{
+                        return Ok(seguimiento );
+                    }
+
+                }
+                catch ( Exception ex)
+                {
+                    
+                    return BadRequest (ex.InnerException);
+                }
             }
-        }
+            [HttpGet("getListSeguimiento/{rut}")]
+            [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+            public async Task<IActionResult> GetRutSeguimiento(string rut)
+            {
+                try
+                {
+                    var identity = HttpContext.User.Identity as ClaimsIdentity;
+                    string rbd = JwtConfigurator.GetTokenRbd(identity);
+                    var seguimiento = await _seguimientoService.GetListSeguimiento(rut, rbd);
+                    if (seguimiento==null){
+                        return Ok(new {message = "No hay seguimientos ingresados"} );
+                    }else{
+                        return Ok(seguimiento );
+                    }
+
+                }
+                catch ( Exception ex)
+                {
+                    
+                    return BadRequest (ex.InnerException);
+                }
+            }
 
         }
 }

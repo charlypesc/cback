@@ -20,6 +20,7 @@ namespace BackEndV1.Services
 
         public Task EliminarSeguimiento(Seguimiento seguimiento)
         {
+            //a estado inactivo
             throw new System.NotImplementedException();
         }
 
@@ -28,14 +29,14 @@ namespace BackEndV1.Services
             throw new System.NotImplementedException();
         }
 
-        public Task<List<Seguimiento>> GetListSeguimiento(string rut, string rbd)
+        public async Task<List<Seguimiento>> GetListSeguimiento(string rut, string rbd)
         {
-            throw new System.NotImplementedException();
+            return await _seguimientoRepository.GetListSeguimiento(rut, rbd);
         }
 
-        public Task<Seguimiento> GetSeguimientoById(int id)
+        public async Task<Seguimiento> GetSeguimientoById(int id)
         {
-            throw new System.NotImplementedException();
+            return await _seguimientoRepository.GetSeguimientoById(id);
         }
 
         public Task UpdateSeguimiento(Seguimiento seguimiento)
