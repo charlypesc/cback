@@ -101,11 +101,15 @@ namespace BackEndV1.Controllers
                 try
                 {
                     var registrosAll = await _reunionesService.GetReunionesAll(rbd);
-
+                
                 if (registrosAll.Count >= 1 )
                 {
                     var ultimo = registrosAll.LastOrDefault();
-                    return Ok(ultimo.Folio);
+                    if(ultimo.Folio ==0)
+                    {
+                        return Ok(1);
+                    }
+                    return Ok(ultimo.Folio+1);
                 }
                 else
                 {

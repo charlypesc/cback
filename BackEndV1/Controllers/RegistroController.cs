@@ -28,13 +28,8 @@ namespace BackEndV1.Controllers
         {
             try
             {
-
-
                 await _registroService.CreateRegistro(registro);
                 //invocar metodo que trae el ultimo con folio registro
-
-
-
                 //a ese numero de folio debo sumarle 1
                 return Ok(new { message = "El numero de registro es "+registro.Id, numeroRegistro = registro.Id  });
             }
@@ -127,7 +122,7 @@ namespace BackEndV1.Controllers
                 if (registrosAll.Count >= 1 )
                 {
                     var ultimo = registrosAll.LastOrDefault();
-                    return Ok(ultimo.Folio);
+                    return Ok(ultimo.Folio+1);
                 }
                 else
                 {
