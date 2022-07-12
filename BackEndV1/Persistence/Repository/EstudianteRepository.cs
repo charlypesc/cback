@@ -37,7 +37,7 @@ namespace BackEndV1.Persistence.Repository
 
         public async Task<List<Estudiante>> GetEstudiantesByRbdByAnoByCurso(string rbd, int anoCursando, string curso)
         {
-            var estudiante = await _context.Estudiante.Where(x => x.Rbd == rbd && x.anoCursando == anoCursando && x.Curso == curso).OrderBy(y => y.NumeroLista).ToListAsync();
+            var estudiante = await _context.Estudiante.Where(x => x.Rbd == rbd && x.anoCursando == anoCursando && x.Curso == curso).OrderBy(y => y.Apellido.Trim()).ToListAsync();
             return estudiante;
         }
 

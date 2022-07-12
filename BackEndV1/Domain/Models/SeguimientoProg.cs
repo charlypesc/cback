@@ -11,6 +11,7 @@ namespace BackEndV1.Domain.Models
     {
         public int Id {get; set; }
         public string NombrePrograma { get; set; }
+        public string ingresadoPor { get; set; }
         public string NotaPrograma {get; set;}
         public DateTime FechaIngreso { get; set; }
         public DateTime FechaEgreso { get; set; }

@@ -28,6 +28,7 @@ namespace BackEndV1.Utils
                 new Claim("idUsuario", userInfo.Id.ToString()),
                 new Claim("Nivel", userInfo.Nivel.ToString()),
                 new Claim("Rbd", userInfo.Rbd.ToString()),
+                 new Claim("name", userInfo.Nombre.ToString()),
                 new Claim("Establecimiento", userInfo.Establecimiento.ToString())
             };
 
@@ -35,7 +36,7 @@ namespace BackEndV1.Utils
             issuer: Issuer,
             audience:Audience,
             claims,
-            expires:DateTime.Now.AddMinutes(60),
+            expires:DateTime.Now.AddMinutes(10),
             signingCredentials:credentials
             
             );

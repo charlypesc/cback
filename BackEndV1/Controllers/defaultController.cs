@@ -16,7 +16,7 @@ namespace BackEndV1.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "AppV-1.5 UP" };
+            return new string[] { "AppV-1.6 UP" };
         }
 
     }

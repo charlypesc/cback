@@ -45,9 +45,11 @@ namespace BackEndV1.Persistence.Repository
                                                     .FirstOrDefaultAsync();
         }
 
-        public Task UpdateSeguimiento(Seguimiento seguimiento)
+        public async Task UpdateSeguimiento(Seguimiento seguimiento)
         {
-            throw new System.NotImplementedException();
+            _context.Update(seguimiento);
+            await _context.SaveChangesAsync();
+
         }
     }
 }

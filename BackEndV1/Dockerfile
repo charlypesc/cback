@@ -8,15 +8,15 @@ RUN dotnet restore
 
 
 
-#RUN apt-get update
+RUN apt-get update
 
-#RUN apt-get install wget libgdiplus -y libreria necesaria para echar a andar dinktopdf
+RUN apt-get install wget libgdiplus -y libreria necesaria para echar a andar dinktopdf
 
-#RUN wget -P /app https://github.com/rdvojmoc/DinkToPdf/raw/master/v0.12.4/64%20bit/libwkhtmltox.dll
+RUN wget -P /app https://github.com/rdvojmoc/DinkToPdf/raw/master/v0.12.4/64%20bit/libwkhtmltox.dll
 
-#RUN wget -P /app https://github.com/rdvojmoc/DinkToPdf/raw/master/v0.12.4/64%20bit/libwkhtmltox.dylib
+RUN wget -P /app https://github.com/rdvojmoc/DinkToPdf/raw/master/v0.12.4/64%20bit/libwkhtmltox.dylib
 
-#RUN wget -P /app https://github.com/rdvojmoc/DinkToPdf/raw/master/v0.12.4/64%20bit/libwkhtmltox.so
+RUN wget -P /app https://github.com/rdvojmoc/DinkToPdf/raw/master/v0.12.4/64%20bit/libwkhtmltox.so
 
 # Copy everything else and build
 #COPY ../engine/examples ./
